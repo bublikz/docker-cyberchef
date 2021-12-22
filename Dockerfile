@@ -7,10 +7,10 @@ RUN chown -R node:node /srv
 USER node
 WORKDIR /srv
 
-RUN git clone -b "$VERSION" --depth=1 https://github.com/gchq/CyberChef.git .
+RUN git clone --depth=1 https://github.com/gchq/CyberChef.git .
 RUN npm install
 
-ENV NODE_OPTIONS="--max-old-space-size=2048"
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npx grunt prod
 
 
